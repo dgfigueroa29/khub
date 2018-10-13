@@ -11,9 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
-
-class App : Application() {
-	
+class App : Application(){
 	//For the sake of simplicity, for now we use this instead of Dagger
 	companion object {
 		private lateinit var retrofit: Retrofit
@@ -23,13 +21,11 @@ class App : Application() {
 		private lateinit var appDatabase: AppDatabase
 		
 		fun injectUserApi() = userApi
-		
 		fun injectUserListViewModel() = userListViewModel
-		
 		fun injectUserDao() = appDatabase.userDao()
 	}
 	
-	override fun onCreate() {
+	override fun onCreate(){
 		super.onCreate()
 		Timber.uprootAll()
 		Timber.plant(Timber.DebugTree())

@@ -16,15 +16,14 @@ import timber.log.Timber
 import java.net.ConnectException
 import java.net.UnknownHostException
 
-class UsersListFragment : MvvmFragment() {
-	
+class UsersListFragment : MvvmFragment(){
 	val userListViewModel = App.injectUserListViewModel()
 	
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		return inflater.inflate(R.layout.users_fragment, container, false)
 	}
 	
-	override fun onStart() {
+	override fun onStart(){
 		super.onStart()
 		subscribe(
 			userListViewModel.getUsers()
@@ -40,17 +39,19 @@ class UsersListFragment : MvvmFragment() {
 		)
 	}
 	
-	fun showUsers(data: UsersList) {
-		if(data.error == null) {
+	fun showUsers(data: UsersList){
+		if(data.error == null){
 			usersList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, data.users)
-		} else if(data.error is ConnectException || data.error is UnknownHostException) {
-			Timber.d("No connection, maybe inform user that data loaded from DB.")
-		} else {
-			showError()
+		}else{
+			if(data.error is ConnectException || data.error is UnknownHostException){
+				Timber.d("No connection, maybe inform user that data loaded from DB.")
+			}else{
+				showError()
+			}
 		}
 	}
 	
-	fun showError() {
+	fun showError(){
 		Toast.makeText(context, "An error occurred :(", Toast.LENGTH_SHORT).show()
 	}
 }

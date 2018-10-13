@@ -9,7 +9,6 @@ import io.reactivex.Single
 
 @Dao
 interface UserDao {
-	
 	@Query("SELECT * FROM users")
 	fun getUsers(): Single<List<User>>
 	
