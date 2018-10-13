@@ -33,7 +33,7 @@ class App : Application(){
 		retrofit = Retrofit.Builder()
 			.addConverterFactory(GsonConverterFactory.create())
 			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-			.baseUrl("https://randomapi.com/api/")
+			.baseUrl("https://api.github.com/search/repositories?q=q")//TODO cambiar filtro
 			.build()
 		
 		userApi = retrofit.create(UserApi::class.java)
