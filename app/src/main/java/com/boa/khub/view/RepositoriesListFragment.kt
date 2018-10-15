@@ -1,6 +1,7 @@
 package com.boa.khub.view
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.boa.khub.App
 import com.boa.khub.R
+import com.boa.khub.adapter.RepositoryAdapter
 import com.boa.khub.viewmodel.data.RepositoriesList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -18,6 +20,7 @@ import java.net.UnknownHostException
 
 class RepositoriesListFragment : MvvmFragment(){
 	val repositoryListViewModel = App.injectRepositoryListViewModel()
+	lateinit var repositoryAdapter: RepositoryAdapter
 	
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		return inflater.inflate(R.layout.repositories_fragment, container, false)
@@ -25,6 +28,7 @@ class RepositoriesListFragment : MvvmFragment(){
 	
 	override fun onStart(){
 		super.onStart()
+		setUpRecyclerView()
 		subscribe(
 			repositoryListViewModel.getRepositories()
 				.subscribeOn(Schedulers.io())
@@ -39,9 +43,17 @@ class RepositoriesListFragment : MvvmFragment(){
 		)
 	}
 	
+	fun setUpRecyclerView(){
+		repositoryAdapter = RepositoryAdapter(activity?.applicationContext!!)
+		repositoriesList.adapter = repositoryAdapter
+		repositoriesList.layoutManager = LinearLayoutManager(activity?.applicationContext!!)
+	}
+	
 	fun showRepositories(data: RepositoriesList){
 		if(data.error == null){
-			repositoriesList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, data.repositories)
+			repositoryAdapter = RepositoryAdapter(activity?.applicationContext!!)
+			repositoryAdapter.loadRepositories(data.repositories)
+			repositoriesList.adapter = repositoryAdapter
 		}else{
 			if(data.error is ConnectException || data.error is UnknownHostException){
 				Timber.d("Sin conexión, tal vez informe al repositorio que los datos cargados desde DB.")

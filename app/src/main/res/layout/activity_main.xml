@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:tools="http://schemas.android.com/tools"
-		android:id="@+id/activity_main"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		tools:context="com.boa.khub.MainActivity">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/activity_main"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.boa.khub.MainActivity">
 	<FrameLayout
-			android:id="@+id/frag_container"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
+		android:id="@+id/frag_container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
 </RelativeLayout>
+<!--LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context="com.boa.khub.MainActivity">
+<include layout="@layout/toolbar" />
+<com.yodle.android.kotlindemo.view.SearchCardView
+	android:id="@+id/mainSearchCardView"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/primary"
+	android:elevation="@dimen/toolbar_elevation" />
+<FrameLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/mainResultsRecycler"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
+	<ProgressBar
+		android:id="@+id/mainResultsSpinner"
+		style="?android:progressBarStyleLarge"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:visibility="gone" />
+</FrameLayout>
+</LinearLayout>-->
