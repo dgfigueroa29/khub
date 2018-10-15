@@ -4,17 +4,17 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-import com.boa.khub.repository.data.User
+import com.boa.khub.repository.data.Repository
 import io.reactivex.Single
 
 @Dao
-interface UserDao {
-	@Query("SELECT * FROM users")
-	fun getUsers(): Single<List<User>>
+interface RepositoryDao{
+	@Query("SELECT * FROM repositories")
+	fun getRepositories(): Single<List<Repository>>
 	
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun insert(user: User)
+	fun insert(repository: Repository)
 	
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun insertAll(users: List<User>)
+	fun insertAll(repositories: List<Repository>)
 }
