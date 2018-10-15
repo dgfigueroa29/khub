@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/repositoriesList"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/activity_main"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent" />
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context="com.boa.khub.MainActivity">
+	<com.boa.khub.view.SearchCardView
+		android:id="@+id/mainSearchCardView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/primary"
+		android:elevation="@dimen/toolbar_elevation" />
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<android.support.v7.widget.RecyclerView
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@+id/repositoriesList"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+		<ProgressBar
+			android:id="@+id/mainResultsSpinner"
+			style="?android:progressBarStyleLarge"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:visibility="gone" />
+	</FrameLayout>
+</LinearLayout>

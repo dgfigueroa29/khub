@@ -1,3 +1,4 @@
 <resources>
 	<string name="app_name">Khub</string>
+	<string name="search_repositories">Buscar...</string>
 </resources>

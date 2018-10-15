@@ -5,18 +5,20 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.boa.khub.App
 import com.boa.khub.R
 import com.boa.khub.adapter.RepositoryAdapter
 import com.boa.khub.viewmodel.data.RepositoriesList
+import com.jakewharton.rxbinding.widget.RxTextView
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.internal.util.HalfSerializer.onNext
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.repositories_fragment.*
 import timber.log.Timber
 import java.net.ConnectException
 import java.net.UnknownHostException
+import java.util.concurrent.TimeUnit
 
 class RepositoriesListFragment : MvvmFragment(){
 	val repositoryListViewModel = App.injectRepositoryListViewModel()
@@ -29,6 +31,7 @@ class RepositoriesListFragment : MvvmFragment(){
 	override fun onStart(){
 		super.onStart()
 		setUpRecyclerView()
+		setUpSearchView()
 		subscribe(
 			repositoryListViewModel.getRepositories()
 				.subscribeOn(Schedulers.io())
@@ -61,6 +64,32 @@ class RepositoriesListFragment : MvvmFragment(){
 				showError()
 			}
 		}
+	}
+	
+	fun setUpSearchView(){
+		val searchEditText = mainSearchCardView.getEditText()
+		searchEditText.setText("kotlin")
+		searchEditText.setSelection(searchEditText.getText().length);
+		searchEditText.setHint(R.string.search_repositories)
+		/*RxTextView.textChanges(searchEditText)
+			.doOnNext { mainResultsSpinner.show() }
+			.sample(1, TimeUnit.SECONDS)
+			.switchMap { App.injectGitHubApi().getRepositories(it.toString()).subscribeOnIo() }
+			.subscribeUntilDestroy(this) {
+				onNext {
+					mainResultsSpinner.hide()
+					repositoryAdapter.loadRepositories(it)
+				}
+				onError {
+					Timber.e(it, "Failed to load repositories")
+					mainResultsSpinner.hide()
+					alert {
+						setTitle(R.string.error)
+						setMessage(R.string.search_repositories_error)
+						setPositiveButton(android.R.string.ok, null)
+					}
+				}
+			}*/
 	}
 	
 	fun showError(){
