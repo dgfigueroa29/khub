@@ -7,8 +7,8 @@ import io.reactivex.Observable
 import timber.log.Timber
 
 class RepositoryListViewModel(private val itemRepository: ItemRepository){
-	fun getRepositories(): Observable<RepositoriesList>{
-		return itemRepository.getRepositories()?.map{
+	fun getRepositories(filter: String): Observable<RepositoriesList>{
+		return itemRepository.getRepositories(filter)?.map{
 			if(it is RepositoryResults){
 				Timber.d("Mapping repositories to UIData...")
 				RepositoriesList(it.items, "Top 50 Repositories")

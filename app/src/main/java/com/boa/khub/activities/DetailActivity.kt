@@ -39,9 +39,9 @@ class DetailActivity : AppCompatActivity(){
 		tvForks = findViewById(R.id.tvForks)
 		tvName = findViewById(R.id.tvName)
 		tvDescription = findViewById(R.id.tvDescription)
-		tvStarts.setText(intent.getStringExtra("name"))
-		tvForks.setText(intent.getStringExtra("stars"))
-		tvName.setText(intent.getStringExtra("forks"))
+		tvStarts.setText(intent.getStringExtra("stars"))
+		tvForks.setText(intent.getStringExtra("forks"))
+		tvName.setText(intent.getStringExtra("name"))
 		tvDescription.setText(intent.getStringExtra("description"))
 	}
 	

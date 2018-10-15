@@ -5,24 +5,23 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import com.boa.khub.App
 import com.boa.khub.R
 import com.boa.khub.adapter.RepositoryAdapter
 import com.boa.khub.viewmodel.data.RepositoriesList
-import com.jakewharton.rxbinding.widget.RxTextView
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.internal.util.HalfSerializer.onNext
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.repositories_fragment.*
 import timber.log.Timber
 import java.net.ConnectException
 import java.net.UnknownHostException
-import java.util.concurrent.TimeUnit
 
 class RepositoriesListFragment : MvvmFragment(){
 	val repositoryListViewModel = App.injectRepositoryListViewModel()
 	lateinit var repositoryAdapter: RepositoryAdapter
+	var filter:String = "khub"
 	
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		return inflater.inflate(R.layout.repositories_fragment, container, false)
@@ -32,8 +31,12 @@ class RepositoriesListFragment : MvvmFragment(){
 		super.onStart()
 		setUpRecyclerView()
 		setUpSearchView()
+		reload()
+	}
+	
+	fun reload(){
 		subscribe(
-			repositoryListViewModel.getRepositories()
+			repositoryListViewModel.getRepositories(filter)
 				.subscribeOn(Schedulers.io())
 				.observeOn(AndroidSchedulers.mainThread())
 				.subscribe({
@@ -68,28 +71,18 @@ class RepositoriesListFragment : MvvmFragment(){
 	
 	fun setUpSearchView(){
 		val searchEditText = mainSearchCardView.getEditText()
-		searchEditText.setText("kotlin")
+		searchEditText.setText(filter)
 		searchEditText.setSelection(searchEditText.getText().length);
 		searchEditText.setHint(R.string.search_repositories)
-		/*RxTextView.textChanges(searchEditText)
-			.doOnNext { mainResultsSpinner.show() }
-			.sample(1, TimeUnit.SECONDS)
-			.switchMap { App.injectGitHubApi().getRepositories(it.toString()).subscribeOnIo() }
-			.subscribeUntilDestroy(this) {
-				onNext {
-					mainResultsSpinner.hide()
-					repositoryAdapter.loadRepositories(it)
-				}
-				onError {
-					Timber.e(it, "Failed to load repositories")
-					mainResultsSpinner.hide()
-					alert {
-						setTitle(R.string.error)
-						setMessage(R.string.search_repositories_error)
-						setPositiveButton(android.R.string.ok, null)
-					}
-				}
-			}*/
+		searchEditText.setOnEditorActionListener { v, actionId, event ->
+			if(actionId == EditorInfo.IME_ACTION_SEARCH){
+				filter = searchEditText.text.toString()
+				reload()
+				return@setOnEditorActionListener true
+			}
+			
+			return@setOnEditorActionListener false
+		}
 	}
 	
 	fun showError(){

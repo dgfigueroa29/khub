@@ -9,10 +9,10 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
 class ItemRepository(val githubApi: GithubApi, val repositoryDao: RepositoryDao){
-	fun getRepositories(): Observable<Any>? {
+	fun getRepositories(filter: String): Observable<Any>? {
 		return Observable.concatArray(
 			getRepositoriesFromDb(),
-			getRepositoriesFromApi("query")
+			getRepositoriesFromApi(filter)
 		)
 	}
 	
@@ -27,6 +27,7 @@ class ItemRepository(val githubApi: GithubApi, val repositoryDao: RepositoryDao)
 	fun getRepositoriesFromApi(filter: String): Observable<RepositoryResults>? {
 		return githubApi.getRepositories(filter)
 			.doOnNext {
+				Timber.d("Filtering with ${filter} ...")
 				Timber.d("Dispatching ${it.items} repositories from API...")
 				storeRepositoriesInDb(it.items)
 			}
