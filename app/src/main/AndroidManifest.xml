@@ -16,7 +16,6 @@
 			</intent-filter>
 		</activity>
 		<activity
-				android:name="com.boa.khub.activities.DetailActivity"
-				android:theme="@style/AppThemeTransparentStatusBar" />
+				android:name="com.boa.khub.activities.DetailActivity" />
 	</application>
 </manifest>

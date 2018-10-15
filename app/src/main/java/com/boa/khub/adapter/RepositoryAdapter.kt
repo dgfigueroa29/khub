@@ -6,8 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import com.boa.khub.R
+import com.boa.khub.activities.DetailActivity
 import com.boa.khub.repository.data.Repository
 import java.util.ArrayList
 
@@ -23,11 +25,13 @@ class RepositoryAdapter(val context: Context) : RecyclerView.Adapter<RepositoryA
 	class RepositoryViewHolder(v: View) : RecyclerView.ViewHolder(v){
 		val repositoryItemTitle: TextView
 		val repositoryItemStarCount: TextView
+		val repositoryItemRootLayout: FrameLayout
 		
 		init{
 			v.setOnClickListener { Log.d("ADAPTER", "Element $adapterPosition clicked.") }
 			repositoryItemTitle = v.findViewById(R.id.repositoryItemTitle)
 			repositoryItemStarCount = v.findViewById(R.id.repositoryItemStarCount)
+			repositoryItemRootLayout = v.findViewById(R.id.repositoryItemRootLayout)
 		}
 	}
 	
@@ -42,5 +46,6 @@ class RepositoryAdapter(val context: Context) : RecyclerView.Adapter<RepositoryA
 		Log.d("ADAPTER", "Element $position set.")
 		viewHolder.repositoryItemTitle.text = repositories.get(position).full_name
 		viewHolder.repositoryItemStarCount.text = repositories.get(position).stargazers_count.toString()
+		viewHolder.repositoryItemRootLayout.setOnClickListener{ context.startActivity(DetailActivity.getIntent(context, repositories.get(position))) }
 	}
 }
