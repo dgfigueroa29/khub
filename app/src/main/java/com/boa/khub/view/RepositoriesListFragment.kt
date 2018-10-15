@@ -1,5 +1,6 @@
 package com.boa.khub.view
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -21,7 +22,9 @@ import java.net.UnknownHostException
 class RepositoriesListFragment : MvvmFragment(){
 	val repositoryListViewModel = App.injectRepositoryListViewModel()
 	lateinit var repositoryAdapter: RepositoryAdapter
-	var filter:String = "khub"
+	var filter: String = "khub"
+	val prefs_name = "com.boa.khub.prefs"
+	var prefs: SharedPreferences? = null
 	
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		return inflater.inflate(R.layout.repositories_fragment, container, false)
@@ -29,12 +32,15 @@ class RepositoriesListFragment : MvvmFragment(){
 	
 	override fun onStart(){
 		super.onStart()
+		prefs = activity!!.getSharedPreferences(prefs_name, 0)
+		filter = prefs!!.getString("filter", "khub")
 		setUpRecyclerView()
 		setUpSearchView()
 		reload()
 	}
 	
 	fun reload(){
+		filter = prefs!!.getString("filter", "khub")
 		subscribe(
 			repositoryListViewModel.getRepositories(filter)
 				.subscribeOn(Schedulers.io())
@@ -76,7 +82,9 @@ class RepositoriesListFragment : MvvmFragment(){
 		searchEditText.setHint(R.string.search_repositories)
 		searchEditText.setOnEditorActionListener { v, actionId, event ->
 			if(actionId == EditorInfo.IME_ACTION_SEARCH){
-				filter = searchEditText.text.toString()
+				val editor = prefs!!.edit()
+				editor.putString("filter", searchEditText.text.toString())
+				editor.apply()
 				reload()
 				return@setOnEditorActionListener true
 			}
