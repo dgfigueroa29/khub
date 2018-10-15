@@ -12,7 +12,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
 class App : Application(){
-	//For the sake of simplicity, for now we use this instead of Dagger
 	companion object {
 		private lateinit var retrofit: Retrofit
 		private lateinit var githubApi: GithubApi

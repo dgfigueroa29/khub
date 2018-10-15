@@ -9,7 +9,7 @@ import io.reactivex.Single
 
 @Dao
 interface RepositoryDao{
-	@Query("SELECT * FROM repositories")
+	@Query("SELECT * FROM repositories ORDER BY stars DESC")
 	fun getRepositories(): Single<List<Repository>>
 	
 	@Insert(onConflict = OnConflictStrategy.REPLACE)

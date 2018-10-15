@@ -6,7 +6,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context="com.boa.khub.MainActivity">
+	tools:context="com.boa.khub.activities.MainActivity">
 	<com.boa.khub.view.SearchCardView
 		android:id="@+id/mainSearchCardView"
 		android:layout_width="match_parent"

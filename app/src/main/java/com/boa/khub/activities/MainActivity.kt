@@ -1,7 +1,8 @@
-package com.boa.khub
+package com.boa.khub.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.boa.khub.R
 import com.boa.khub.view.RepositoriesListFragment
 import kotlinx.android.synthetic.main.toolbar.*
 
