@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 
-fun Context.inflateLayout(resource: Int, root: ViewGroup? = null, attachToRoot: Boolean = false): View{
-	return LayoutInflater.from(this).inflate(resource, root, attachToRoot)
+fun Context.inflateLayout(
+    resource: Int,
+    root: ViewGroup? = null,
+    attachToRoot: Boolean = false
+): View {
+    return LayoutInflater.from(this).inflate(resource, root, attachToRoot)
 }
 
-inline fun Context.alert(func: AlertDialog.Builder.() -> AlertDialog.Builder){
-	AlertDialog.Builder(this).func().show()
+inline fun Context.alert(func: AlertDialog.Builder.() -> AlertDialog.Builder) {
+    AlertDialog.Builder(this).func().show()
 }
 
 fun Context.toastShort(text: CharSequence) = Toast.makeText(this, text, Toast.LENGTH_SHORT).show()

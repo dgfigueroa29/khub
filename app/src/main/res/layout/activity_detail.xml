@@ -1,67 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context="com.boa.khub.activities.DetailActivity">
-	<include layout="@layout/toolbar" />
-	<RelativeLayout
-		android:layout_below="@+id/toolbar"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:padding="@dimen/material_padding_double">
-		<ImageView
-				android:id="@+id/ivStars"
-			android:layout_alignParentLeft="true"
-			android:contentDescription="@string/app_name"
-			android:layout_width="16dp"
-			android:layout_height="16dp"
-			android:adjustViewBounds="true"
-			android:src="@drawable/ic_star" />
-		<TextView
-			android:layout_toRightOf="@+id/ivStars"
-			android:id="@+id/tvStars"
-			android:text="1"
-			style="@style/SecondaryTextStyle"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginRight="@dimen/material_padding_quarter"
-			android:textColor="@color/primary_text"
-			tools:text="532" />
-		<ImageView
-			android:layout_marginLeft="@dimen/material_padding"
-			android:layout_toRightOf="@+id/tvStars"
-			android:id="@+id/ivForks"
-			android:contentDescription="@string/app_name"
-			android:layout_width="16dp"
-			android:layout_height="16dp"
-			android:adjustViewBounds="true"
-			android:src="@drawable/ic_fork" />
-		<TextView
-			android:layout_toRightOf="@+id/ivForks"
-			android:id="@+id/tvForks"
-			android:text="2"
-			style="@style/SecondaryTextStyle"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textColor="@color/primary_text"
-			tools:text="532" />
-		<TextView
-			android:layout_below="@+id/tvStars"
-			android:id="@+id/tvName"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textStyle="bold"
-			android:layout_marginTop="@dimen/material_padding"
-			android:text="Name" />
-		<TextView
-			android:layout_below="@+id/tvName"
-			android:id="@+id/tvDescription"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textStyle="italic"
-			android:layout_marginTop="@dimen/material_padding"
-			android:text="Description" />
-	</RelativeLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.boa.khub.activities.DetailActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/material_padding_double">
+
+        <ImageView
+            android:id="@+id/ivStars"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@string/app_name"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_star" />
+
+        <TextView
+            android:layout_toRightOf="@+id/ivStars"
+            android:id="@+id/tvStars"
+            android:text="1"
+            style="@style/SecondaryTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/material_padding_quarter"
+            android:textColor="@color/primary_text"
+            tools:text="532" />
+
+        <ImageView
+            android:layout_marginLeft="@dimen/material_padding"
+            android:layout_toRightOf="@+id/tvStars"
+            android:id="@+id/ivForks"
+            android:contentDescription="@string/app_name"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_fork" />
+
+        <TextView
+            android:layout_toRightOf="@+id/ivForks"
+            android:id="@+id/tvForks"
+            android:text="2"
+            style="@style/SecondaryTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            tools:text="532" />
+
+        <TextView
+            android:layout_below="@+id/tvStars"
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/material_padding"
+            android:text="Name" />
+
+        <TextView
+            android:layout_below="@+id/tvName"
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:layout_marginTop="@dimen/material_padding"
+            android:text="Description" />
+    </RelativeLayout>
 </RelativeLayout>
