@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/repositoryItemRootLayout"
     android:layout_width="match_parent"
@@ -8,53 +8,40 @@
     android:clickable="true"
     android:padding="@dimen/material_padding_half">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/repositoryItemTitle"
+        style="@style/PrimaryTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_marginEnd="@dimen/material_padding"
+        android:layout_marginBottom="@dimen/material_padding_quarter"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text=""
+        tools:text="JetBrains/kotlin" />
 
-        <TextView
-            android:id="@+id/repositoryItemTitle"
-            android:text=""
-            style="@style/PrimaryTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/material_padding_quarter"
-            android:layout_marginRight="@dimen/material_padding_double"
-            android:ellipsize="end"
-            android:lines="1"
-            tools:text="JetBrains/kotlin" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/ivStars"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/repositoryItemTitle"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_star" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/repositoryItemStarCount"
+        style="@style/SecondaryTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingRight="@dimen/material_padding">
-
-        <TextView
-            android:id="@+id/repositoryItemStarCount"
-            android:text=""
-            style="@style/SecondaryTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/material_padding_quarter"
-            android:textColor="@color/primary_text"
-            tools:text="532" />
-
-        <ImageView
-            android:contentDescription="@string/app_name"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_star" />
-    </LinearLayout>
+        android:layout_below="@+id/repositoryItemTitle"
+        android:layout_marginEnd="@dimen/material_padding_quarter"
+        android:layout_toEndOf="@+id/ivStars"
+        android:text=""
+        android:textColor="@color/primary_text"
+        tools:text="532" />
 
     <View
         style="@style/HorizontalDividerStyle"
         android:layout_gravity="bottom" />
-</FrameLayout>
+</RelativeLayout>

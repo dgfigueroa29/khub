@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.boa.khub.R
@@ -26,7 +26,7 @@ class RepositoryAdapter(val context: Context) :
     class RepositoryViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         val repositoryItemTitle: TextView
         val repositoryItemStarCount: TextView
-        val repositoryItemRootLayout: FrameLayout
+        val repositoryItemRootLayout: RelativeLayout
 
         init {
             v.setOnClickListener { Log.d("ADAPTER", "Element $adapterPosition clicked.") }

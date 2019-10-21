@@ -20,10 +20,10 @@ import java.net.ConnectException
 import java.net.UnknownHostException
 
 class RepositoriesListFragment : MvvmFragment() {
-    val repositoryListViewModel = App.injectRepositoryListViewModel()
+    private val repositoryListViewModel = App.injectRepositoryListViewModel()
     lateinit var repositoryAdapter: RepositoryAdapter
     var filter: String = "khub"
-    val prefs_name = "com.boa.khub.prefs"
+    private val prefsName = "com.boa.khub.prefs"
     var prefs: SharedPreferences? = null
 
     override fun onCreateView(
@@ -36,14 +36,14 @@ class RepositoriesListFragment : MvvmFragment() {
 
     override fun onStart() {
         super.onStart()
-        prefs = activity!!.getSharedPreferences(prefs_name, 0)
+        prefs = activity!!.getSharedPreferences(prefsName, 0)
         filter = prefs!!.getString("filter", "khub")!!
         setUpRecyclerView()
         setUpSearchView()
         reload()
     }
 
-    fun reload() {
+    private fun reload() {
         filter = prefs!!.getString("filter", "khub")!!
         subscribe(
             repositoryListViewModel.getRepositories(filter)
@@ -59,14 +59,14 @@ class RepositoriesListFragment : MvvmFragment() {
         )
     }
 
-    fun setUpRecyclerView() {
+    private fun setUpRecyclerView() {
         repositoryAdapter = RepositoryAdapter(activity?.applicationContext!!)
         repositoriesList.adapter = repositoryAdapter
         repositoriesList.layoutManager =
             LinearLayoutManager(activity?.applicationContext!!)
     }
 
-    fun showRepositories(data: RepositoriesList) {
+    private fun showRepositories(data: RepositoriesList) {
         if (data.error == null) {
             repositoryAdapter = RepositoryAdapter(activity?.applicationContext!!)
             repositoryAdapter.loadRepositories(data.repositories)
@@ -80,7 +80,7 @@ class RepositoriesListFragment : MvvmFragment() {
         }
     }
 
-    fun setUpSearchView() {
+    private fun setUpSearchView() {
         val searchEditText = mainSearchCardView.getEditText()
         searchEditText.setText(filter)
         searchEditText.setSelection(searchEditText.getText().length);
@@ -98,7 +98,7 @@ class RepositoriesListFragment : MvvmFragment() {
         }
     }
 
-    fun showError() {
+    private fun showError() {
         Toast.makeText(context, "Ha ocurrido un error :(", Toast.LENGTH_SHORT).show()
     }
 }

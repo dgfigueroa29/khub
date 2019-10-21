@@ -25,7 +25,7 @@ class SearchCardView : FrameLayout {
         init(context)
     }
 
-    fun init(context: Context) {
+    private fun init(context: Context) {
         context.inflateLayout(R.layout.search_card, this, true)
         searchCardClear.setOnClickListener { searchCardEditText.text = null }
     }
