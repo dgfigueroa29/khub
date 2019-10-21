@@ -1,6 +1,6 @@
-package com.boa.khub.repository.api
+package com.boa.khub2.repository.api
 
-import com.boa.khub.repository.data.RepositoryResults
+import com.boa.khub2.repository.data.RepositoryResults
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Headers

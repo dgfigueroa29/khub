@@ -10,7 +10,7 @@ repositories {
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.boa.khub"
+        applicationId "com.boa.khub2"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 2

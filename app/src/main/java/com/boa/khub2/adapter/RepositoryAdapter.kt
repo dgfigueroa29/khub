@@ -1,4 +1,4 @@
-package com.boa.khub.adapter
+package com.boa.khub2.adapter
 
 import android.content.Context
 import android.util.Log
@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.boa.khub.R
-import com.boa.khub.activities.DetailActivity
-import com.boa.khub.repository.data.Repository
+import com.boa.khub2.R
+import com.boa.khub2.activities.DetailActivity
+import com.boa.khub2.repository.data.Repository
 import java.util.*
 
 class RepositoryAdapter(val context: Context) :

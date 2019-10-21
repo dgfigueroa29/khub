@@ -1,4 +1,4 @@
-package com.boa.khub.view
+package com.boa.khub2.view
 
 import androidx.fragment.app.Fragment
 import io.reactivex.disposables.CompositeDisposable

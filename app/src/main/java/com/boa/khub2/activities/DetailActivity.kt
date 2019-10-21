@@ -1,4 +1,4 @@
-package com.boa.khub.activities
+package com.boa.khub2.activities
 
 import android.content.Context
 import android.content.Intent
@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.boa.khub.R
-import com.boa.khub.repository.data.Repository
+import com.boa.khub2.R
+import com.boa.khub2.repository.data.Repository
 import kotlinx.android.synthetic.main.toolbar.*
 
 class DetailActivity : AppCompatActivity() {

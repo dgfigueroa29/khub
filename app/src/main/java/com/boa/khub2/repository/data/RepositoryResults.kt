@@ -1,4 +1,4 @@
-package com.boa.khub.repository.data
+package com.boa.khub2.repository.data
 
 data class RepositoryResults(
     val total_count: Long,

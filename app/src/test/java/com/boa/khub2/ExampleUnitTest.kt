@@ -1,4 +1,4 @@
-package com.boa.khub
+package com.boa.khub2
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

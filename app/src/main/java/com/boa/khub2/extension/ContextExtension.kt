@@ -1,4 +1,4 @@
-package com.boa.khub.extension
+package com.boa.khub2.extension
 
 import android.app.AlertDialog
 import android.content.Context

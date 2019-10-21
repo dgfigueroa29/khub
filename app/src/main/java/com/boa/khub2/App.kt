@@ -1,11 +1,11 @@
-package com.boa.khub
+package com.boa.khub2
 
 import android.app.Application
 import androidx.room.Room
-import com.boa.khub.repository.ItemRepository
-import com.boa.khub.repository.api.GithubApi
-import com.boa.khub.repository.db.AppDatabase
-import com.boa.khub.viewmodel.RepositoryListViewModel
+import com.boa.khub2.repository.ItemRepository
+import com.boa.khub2.repository.api.GithubApi
+import com.boa.khub2.repository.db.AppDatabase
+import com.boa.khub2.viewmodel.RepositoryListViewModel
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory

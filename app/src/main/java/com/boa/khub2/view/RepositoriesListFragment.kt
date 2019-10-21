@@ -1,4 +1,4 @@
-package com.boa.khub.view
+package com.boa.khub2.view
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.boa.khub.App
-import com.boa.khub.R
-import com.boa.khub.adapter.RepositoryAdapter
-import com.boa.khub.viewmodel.data.RepositoriesList
+import com.boa.khub2.App
+import com.boa.khub2.R
+import com.boa.khub2.adapter.RepositoryAdapter
+import com.boa.khub2.viewmodel.data.RepositoriesList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.repositories_fragment.*
@@ -22,8 +22,8 @@ import java.net.UnknownHostException
 class RepositoriesListFragment : MvvmFragment() {
     private val repositoryListViewModel = App.injectRepositoryListViewModel()
     lateinit var repositoryAdapter: RepositoryAdapter
-    var filter: String = "khub"
-    private val prefsName = "com.boa.khub.prefs"
+    var filter: String = "khub2"
+    private val prefsName = "com.boa.khub2.prefs"
     var prefs: SharedPreferences? = null
 
     override fun onCreateView(
@@ -37,14 +37,14 @@ class RepositoriesListFragment : MvvmFragment() {
     override fun onStart() {
         super.onStart()
         prefs = activity!!.getSharedPreferences(prefsName, 0)
-        filter = prefs!!.getString("filter", "khub")!!
+        filter = prefs!!.getString("filter", "khub2")!!
         setUpRecyclerView()
         setUpSearchView()
         reload()
     }
 
     private fun reload() {
-        filter = prefs!!.getString("filter", "khub")!!
+        filter = prefs!!.getString("filter", "khub2")!!
         subscribe(
             repositoryListViewModel.getRepositories(filter)
                 .subscribeOn(Schedulers.io())

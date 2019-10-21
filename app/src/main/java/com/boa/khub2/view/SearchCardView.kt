@@ -1,11 +1,11 @@
-package com.boa.khub.view
+package com.boa.khub2.view
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.EditText
 import android.widget.FrameLayout
-import com.boa.khub.R
-import com.boa.khub.extension.inflateLayout
+import com.boa.khub2.R
+import com.boa.khub2.extension.inflateLayout
 import kotlinx.android.synthetic.main.search_card.view.*
 
 class SearchCardView : FrameLayout {

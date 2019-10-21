@@ -1,9 +1,9 @@
-package com.boa.khub.activities
+package com.boa.khub2.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.boa.khub.R
-import com.boa.khub.view.RepositoriesListFragment
+import com.boa.khub2.R
+import com.boa.khub2.view.RepositoriesListFragment
 import kotlinx.android.synthetic.main.toolbar.*
 
 class MainActivity : AppCompatActivity() {

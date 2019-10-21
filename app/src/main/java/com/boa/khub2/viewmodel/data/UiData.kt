@@ -1,6 +1,6 @@
-package com.boa.khub.viewmodel.data
+package com.boa.khub2.viewmodel.data
 
-import com.boa.khub.repository.data.Repository
+import com.boa.khub2.repository.data.Repository
 
 data class RepositoriesList(
     val repositories: List<Repository>,

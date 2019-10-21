@@ -1,10 +1,10 @@
-package com.boa.khub.repository.db
+package com.boa.khub2.repository.db
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.boa.khub.repository.data.Repository
+import com.boa.khub2.repository.data.Repository
 import io.reactivex.Single
 
 @Dao

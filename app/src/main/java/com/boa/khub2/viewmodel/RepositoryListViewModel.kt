@@ -1,8 +1,8 @@
-package com.boa.khub.viewmodel
+package com.boa.khub2.viewmodel
 
-import com.boa.khub.repository.ItemRepository
-import com.boa.khub.repository.data.RepositoryResults
-import com.boa.khub.viewmodel.data.RepositoriesList
+import com.boa.khub2.repository.ItemRepository
+import com.boa.khub2.repository.data.RepositoryResults
+import com.boa.khub2.viewmodel.data.RepositoriesList
 import io.reactivex.Observable
 import timber.log.Timber
 

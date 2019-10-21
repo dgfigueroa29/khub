@@ -1,9 +1,9 @@
-package com.boa.khub.repository
+package com.boa.khub2.repository
 
-import com.boa.khub.repository.api.GithubApi
-import com.boa.khub.repository.data.Repository
-import com.boa.khub.repository.data.RepositoryResults
-import com.boa.khub.repository.db.RepositoryDao
+import com.boa.khub2.repository.api.GithubApi
+import com.boa.khub2.repository.data.Repository
+import com.boa.khub2.repository.data.RepositoryResults
+import com.boa.khub2.repository.db.RepositoryDao
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
